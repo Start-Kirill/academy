@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Ks
+ *
+ */
+module academy {
+}
