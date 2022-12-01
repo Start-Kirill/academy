@@ -39,28 +39,35 @@ public class Task2 {
 		scan.close(); // closing scanner
 
 		/*
-		 * Choosing appropriate option depending on entered type of data.
+		 * Checking if the type insn't null. Choosing appropriate option depending on
+		 * entered type of data.
 		 */
-		switch (type) {
-		case "int":
-			System.out.println("Remainder of division by 2: " + Integer.parseInt(data) % 2); // Output reminder of
-																								// division by 2
-			break;
-		case "double":
-			System.out.println("70% from " + data + ": " + Double.parseDouble(data) * 0.7); // Output 70% from the value
-			break;
-		case "float":
-			System.out.println(data + " squared: " + Math.pow(Float.parseFloat(data), 2)); // Output the value squared
-			break;
-		case "char":
-			System.out.println("The first symbol: " + data.charAt(0)); // Output the string's first symbol
-			break;
-		case "string":
-			System.out.println("Hello " + data);
-			break;
-		default:
-			System.out.println("Unsupported type");
-			break;
+		if (type != null) {
+			switch (type) {
+			case "int":
+				System.out.println("Remainder of division by 2: " + Integer.parseInt(data) % 2); // Output reminder of
+																									// division by 2
+				break;
+			case "double":
+				System.out.println("70% from " + data + ": " + Double.parseDouble(data) * 0.7); // Output 70% from the
+																								// value
+				break;
+			case "float":
+				System.out.println(data + " squared: " + Math.pow(Float.parseFloat(data), 2)); // Output the value
+																								// squared
+				break;
+			case "char":
+				System.out.println("The first symbol: " + data.charAt(0)); // Output the string's first symbol
+				break;
+			case "string":
+				System.out.println("Hello " + data);
+				break;
+			default:
+				System.out.println("Unsupported type");
+				break;
+			}
+		} else {
+			System.out.println("You didn't pick a type");
 		}
 
 	}

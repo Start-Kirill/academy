@@ -76,7 +76,7 @@ public class Cat {
 		return isHomeAnimal;
 	}
 
-	/** Calling this method raise the age by 1 */
+	/** Calling this method raises the age by 1 */
 	public void grow() {
 		age++;
 	}
