@@ -1,1 +1,0 @@
-package by.academy.lesson2.classwork;
