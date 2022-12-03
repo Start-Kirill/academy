@@ -24,7 +24,7 @@ public class ArrayTasks {
 //		Task15();
 //		Task16();
 //		Task17();
-//		Task18();
+		Task18();
 
 	}
 
