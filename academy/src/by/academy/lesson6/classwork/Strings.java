@@ -323,6 +323,7 @@ public class Strings {
 			System.out.println("There isn't numerical palindrome");
 		}
 	}
+	//test
 	
 	
 
