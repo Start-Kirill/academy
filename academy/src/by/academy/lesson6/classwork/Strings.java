@@ -1,5 +1,6 @@
 package by.academy.lesson6.classwork;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -11,7 +12,10 @@ public class Strings {
 //		Task2();
 //		Task3();
 //		Task4();
-		Task5();
+//		Task5();
+//		Task6();
+//		Task7();
+		Task8();
 	}
 
 	static void Task1() {
@@ -19,6 +23,8 @@ public class Strings {
 		System.out.print("Enter the number of strings: ");
 		int n = sc.nextInt();
 		String[] strings = new String[n];
+		
+		
 
 		Comparator<String> lengthCompare = new StringLengthSort();
 
@@ -178,6 +184,146 @@ public class Strings {
 		System.out.println(numWordsEqual);
 
 	}
+
+	static void Task6() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the number of strings: ");
+		int n;
+		boolean indicator = true;
+		int index = -1;
+
+		do {
+			n = sc.nextInt();
+		} while (n < 1);
+
+		String[] array = new String[n];
+
+		for (int i = 0; i < n; i++) {
+			array[i] = sc.next();
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 1; j < array[i].length(); j++) {
+				if (array[i].charAt(j) < array[i].charAt(j - 1)) {
+					indicator = false;
+					break;
+				}
+			}
+			if (indicator == true) {
+				index = i;
+				break;
+			} else {
+				indicator = true;
+			}
+		}
+		if (index >= 0) {
+			System.out.println("The first word with strict growing order of letters is: " + array[index]);
+		} else {
+			System.out.println("There isn't word with strict growing order of letters in the array");
+		}
+
+	}
+
+	static void Task7() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the number of strings: ");
+		int n;
+		boolean indicator = true;
+		int index = -1;
+
+		do {
+			n = sc.nextInt();
+		} while (n < 1);
+
+		String[] array = new String[n];
+
+		for (int i = 0; i < n; i++) {
+			array[i] = sc.next();
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < array[i].length(); j++) {
+				for (int k = 0; k < array[i].length(); k++) {
+					if (k != j) {
+						if (array[i].charAt(j) == array[i].charAt(k)) {
+							indicator = false;
+							break;
+						}
+					}
+				}
+				if (indicator == false) {
+					break;
+				}
+			}
+			if (indicator == true) {
+				index = i;
+				break;
+			} else {
+				indicator = true;
+			}
+		}
+
+		if (index >= 0) {
+			System.out.println("The first word with different letters is: " + array[index]);
+		} else {
+			System.out.println("There isn't word with different letters");
+		}
+	}
+
+	static void Task8() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the number of strings: ");
+		int n;
+		boolean indicator = true;
+//		ArrayList<Integer> list = new ArrayList<Integer>();
+		int[] indexes = {-1, -1};
+
+		do {
+			n = sc.nextInt();
+		} while (n < 1);
+
+		String[] array = new String[n];
+
+		for (int i = 0; i < n; i++) {
+			array[i] = sc.next();
+		}
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0, k = array[i].length() - 1; j < array[i].length(); j++, k--) {
+				if (array[i].charAt(j) != array[i].charAt(k) || !(Character.isDigit(array[i].charAt(j)))) {
+					indicator = false;
+					break;
+				}
+			}
+			if (indicator == true) {
+//				list.add(i);
+				if(indexes[0] == -1) {
+					indexes[0] = i;
+				} else {
+					indexes[1] = 1;
+				}
+//				if (list.size() > 1)
+				if (indexes[1] > -1) {
+					break;
+				}
+			} else {
+				indicator = true;
+			}
+		}
+
+//		if (list.size() > 1)
+		if (indexes[1] > -1) {
+//			System.out.println(array[list.get(1)]);
+			System.out.println(array[indexes[1]]);
+//		} else if (list.size() == 1)
+		} else if (indexes[1] == -1) {
+//			System.out.println(array[list.get(0)]);
+			System.out.println(array[indexes[0]]);
+		} else {
+			System.out.println("There isn't numerical palindrome");
+		}
+	}
 	
 	
+
 }
