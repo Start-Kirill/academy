@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package by.academy.lesson5.classwork;
 
 import java.util.Scanner;

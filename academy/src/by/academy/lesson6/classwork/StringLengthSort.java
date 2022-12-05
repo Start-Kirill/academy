@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package by.academy.lesson6.classwork;
 
 import java.util.Comparator;

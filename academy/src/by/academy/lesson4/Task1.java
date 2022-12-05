@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package by.academy.lesson4;
 
 import java.util.Arrays;
