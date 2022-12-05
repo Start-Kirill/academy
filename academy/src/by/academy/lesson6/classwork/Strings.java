@@ -167,15 +167,17 @@ public class Strings {
 				numbWord++;
 				if (counterVowels == counterConsonant) {
 					numWordsEqual++;
-				}	
+				}
 			}
 			isLat = true;
 			counterVowels = 0;
 			counterConsonant = 0;
 		}
-		
+
 		System.out.println(numbWord);
 		System.out.println(numWordsEqual);
-		
+
 	}
+	
+	
 }
