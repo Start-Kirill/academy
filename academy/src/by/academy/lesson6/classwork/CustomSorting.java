@@ -11,7 +11,7 @@ public class CustomSorting {
 	}
 	
 	static void BubbleSortTask() {
-		char[] symbols = {'a', '4', '+', 'e', 'c', 'y', 'u', 'm', '5', 'n'};
+		char[] symbols = {'a', '4', '+', 'e', 'c', 'y', 'u', 'm', '5', 'n', 'a'};
 		char temp = 0;
 		for (int i = 0; i < symbols.length; i++) {
 			for (int j = i + 1; j < symbols.length; j++) {
