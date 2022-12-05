@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class ArraysClasswork {
 
 	public static void main(String[] args) {
-		Task0();
-		Task1();
-		Task2();
-		Task3();
+//		Task0();
+//		Task1();
+//		Task2();
+//		Task3();
 		Task4();
 	}
 
@@ -59,6 +59,4 @@ public class ArraysClasswork {
 		
 	}
 	
-	
-
 }
