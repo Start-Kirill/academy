@@ -44,10 +44,8 @@ public class Task3 {
 		} while (wordTwo.length() % 2 != 0);
 
 		/* Making the new word */
-		StringBuilder firstWord = new StringBuilder(wordOne);
-		StringBuilder secondWord = new StringBuilder(wordTwo);
-		StringBuilder newWord = new StringBuilder(firstWord.substring(0, firstWord.length() / 2)
-				+ secondWord.substring(secondWord.length() / 2, secondWord.length()));
+		String newWord = new String(wordOne.substring(0, wordOne.length() / 2)
+				+ wordTwo.substring(wordTwo.length() / 2, wordTwo.length()));
 
 		System.out.println(newWord);
 		sc.close();
