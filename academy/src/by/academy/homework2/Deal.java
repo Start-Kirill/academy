@@ -51,61 +51,18 @@ public class Deal {
 		/* Array for storing the deck of 52 cards */
 		String[][] deck = new String[13][4];
 
+		String[] suits = { " of Hearts", " of Diamonds", " of Clubs", " of Spades" };
+		String[] ranks = { "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen",
+				"King", "Ace" };
+
 		/* Algorithm of initialization of the deck */
 		for (int i = 0; i < deck.length; i++) {
 			for (int j = 0; j < deck[i].length; j++) {
-				if (j == 0) {
-					if (i < 9) {
-						deck[i][j] = String.valueOf(i + 2) + " of Hearts";
-					} else if (i == 9) {
-						deck[i][j] = "Jack of Hearts";
-					} else if (i == 10) {
-						deck[i][j] = "Queen of Hearts";
-					} else if (i == 11) {
-						deck[i][j] = "King of Hearts";
-					} else {
-						deck[i][j] = "Ace of Hearts";
-					}
-				} else if (j == 1) {
-					if (i < 9) {
-						deck[i][j] = String.valueOf(i + 2) + " of Diamonds";
-					} else if (i == 9) {
-						deck[i][j] = "Jack of Diamonds";
-					} else if (i == 10) {
-						deck[i][j] = "Queen of Diamonds";
-					} else if (i == 11) {
-						deck[i][j] = "King of Diamonds";
-					} else {
-						deck[i][j] = "Ace of Diamonds";
-					}
-				} else if (j == 2) {
-					if (i < 9) {
-						deck[i][j] = String.valueOf(i + 2) + " of Clubs";
-					} else if (i == 9) {
-						deck[i][j] = "Jack of Clubs";
-					} else if (i == 10) {
-						deck[i][j] = "Queen of Clubs";
-					} else if (i == 11) {
-						deck[i][j] = "King of Clubs";
-					} else {
-						deck[i][j] = "Ace of Clubs";
-					}
-				} else {
-					if (i < 9) {
-						deck[i][j] = String.valueOf(i + 2) + " of Spades";
-					} else if (i == 9) {
-						deck[i][j] = "Jack of Spades";
-					} else if (i == 10) {
-						deck[i][j] = "Queen of Spades";
-					} else if (i == 11) {
-						deck[i][j] = "King of Spades";
-					} else {
-						deck[i][j] = "Ace of Spades";
-					}
-				}
+				deck[i][j] = ranks[i] + suits[j];
 			}
 		}
 		return deck;
+
 	}
 
 	/**
