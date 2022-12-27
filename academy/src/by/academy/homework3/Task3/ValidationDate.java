@@ -1,10 +1,26 @@
+/*
+ * Homework #3 Task #1
+ * 
+ * Kirill Starovoitov
+ */
 package by.academy.homework3.Task3;
 
 import java.util.regex.Pattern;
 
+/**
+ * Implementation of Task # 3 of Homework # 3. Class for date's validation
+ * 
+ * @version 1.0 27 Dec 2022
+ * @author Kirill Starovoitov
+ *
+ */
 public class ValidationDate {
 
-	public boolean validate(String date) {
+	public static boolean validate(String date) {
+
+		if (date.length() != 10) {
+			return false;
+		}
 
 		String[] dividedDate = date.split("/|-");
 
@@ -30,8 +46,8 @@ public class ValidationDate {
 
 		return true;
 	}
-
-	private boolean validateDayMonth(String day, String month, String year) {
+	
+	private static boolean validateDayMonth(String day, String month, String year) {
 
 		String dayMonth = new String(day + month);
 
@@ -48,7 +64,7 @@ public class ValidationDate {
 		return true;
 	}
 
-	private boolean isIntercalaryYear(String year) {
+	private static boolean isIntercalaryYear(String year) {
 		int yearInt = Integer.parseInt(year);
 
 		if (yearInt % 4 == 0) {
