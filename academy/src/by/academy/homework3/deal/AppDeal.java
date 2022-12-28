@@ -7,7 +7,6 @@ package by.academy.homework3.deal;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -29,11 +28,12 @@ public class AppDeal {
 	private static final DateTimeFormatter formatterTwo = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US);
 	private static final BelarusPhoneValidator phoneValidator = new BelarusPhoneValidator();
 	private static final EmailValidator emailValidator = new EmailValidator();
+	private static final ValidationDate dateValidator = new ValidationDate();
 
 	public static void main(String[] args) {
 		int option = 0; // option from the main menu
 		boolean indicator = false; // indicator if a deal is successful
-		Product[] products = new Product[100];
+		Product[] products = new Product[16];
 		Person seller = makePerson("seller");
 		Person buyer = makePerson("buyer");
 		Deal deal = new Deal(seller, buyer, products);
@@ -41,14 +41,14 @@ public class AppDeal {
 		printPerson(seller, buyer);
 
 		do {
-			printBasket(products);
+			printBasket(deal.getProducts());
 			option = pickOption();
 			switch (option) {
 			case 1:
-				makeProducts(products);
+				deal.setProducts(makeProducts(deal.getProducts()));
 				break;
 			case 2:
-				deleteProduct(products);
+				deal.setProducts(deleteProduct(deal.getProducts()));
 				break;
 			case 3:
 				indicator = deal.deal();
@@ -84,12 +84,14 @@ public class AppDeal {
 		do {
 			System.out.printf("Enter date of birth of %s in format dd/MM/yyyy or dd-MM-yyyy:%n", type);
 			tempDate = sc.next();
-		} while (!(ValidationDate.validate(tempDate)));
+			dateValidator.setDate(tempDate);
+		} while (!(dateValidator.validate()));
 
+		dateValidator.setDivider(); // setting divider after be sure that a date is valid
 		LocalDate dateOfBirth;
-		try {
+		if (dateValidator.getDivider() == '/') {
 			dateOfBirth = LocalDate.parse(tempDate, formatterOne);
-		} catch (DateTimeParseException ex) {
+		} else {
 			dateOfBirth = LocalDate.parse(tempDate, formatterTwo);
 		}
 
@@ -150,7 +152,8 @@ public class AppDeal {
 	}
 
 	/**
-	 * Method for making some products
+	 * Method for making some products and making array of products bigger if it's
+	 * needed
 	 * 
 	 * @param products Array of products
 	 * @return Array of products
@@ -158,7 +161,18 @@ public class AppDeal {
 	private static Product[] makeProducts(Product[] products) {
 		char indicator = 'y';
 		int numberProduct = 0;
+		int counterProducts = 0;
 		while (indicator == 'y' || indicator == 'Y') {
+			for (Product product : products) {
+				if (product != null) {
+					counterProducts++;
+				}
+			}
+			if (counterProducts == products.length) {
+				Product[] tempProducts = new Product[products.length * 2 + 1];
+				System.arraycopy(products, 0, tempProducts, 0, products.length);
+				products = tempProducts;
+			}
 			do {
 				System.out.println("Pick a product:\n1 - Beer\n2 - Prawns\n3 - Lime\n4 - Back");
 				numberProduct = sc.nextInt();
@@ -196,6 +210,7 @@ public class AppDeal {
 			printBasket(products);
 			System.out.println("\nWould you like pick more products: y/n ?");
 			indicator = sc.next().charAt(0);
+			counterProducts = 0;
 		}
 		return products;
 	}
@@ -315,8 +330,6 @@ public class AppDeal {
 	 * @param deal
 	 */
 	private static void printReceipt(Deal deal) {
-		double tempAmount = 0;
-		double amount = 0;
 		String divider = "-----------------------------------------------";
 		System.out.printf("%-15s %30s%n%n", "Deadline", deal.getDeadlineDate());
 		System.out.printf("%-15s %30s%n%n", "Date", LocalDate.now());
@@ -325,15 +338,13 @@ public class AppDeal {
 
 		for (int i = 0; i < deal.getProducts().length; i++) {
 			if (deal.getProducts()[i] != null) {
-				tempAmount = deal.getProducts()[i].calcPrice() * deal.getProducts()[i].discount();
-				amount += tempAmount;
 				System.out.printf("%-15s %5.2f %8.2f %7.2f%s %6.2f%n", deal.getProducts()[i].getName(),
 						deal.getProducts()[i].getPrice(), deal.getProducts()[i].getQuantity(),
-						(1 - deal.getProducts()[i].discount()) * 100, "%", tempAmount);
+						(1 - deal.getProducts()[i].discount()) * 100, "%", deal.getProducts()[i].getFinalPrice());
 			}
 		}
 
-		System.out.printf("%s%n%-15s %30.2f", divider, "TOTAL", amount);
+		System.out.printf("%s%n%-15s %30.2f", divider, "TOTAL", deal.calcAmount());
 	}
 
 	/**

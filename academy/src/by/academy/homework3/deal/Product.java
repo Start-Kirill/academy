@@ -47,6 +47,10 @@ public abstract class Product {
 
 	public abstract double discount();
 
+	public double getFinalPrice() {
+		return calcPrice() * discount();
+	}
+
 	@Override
 	public String toString() {
 		return "Product [name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
