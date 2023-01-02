@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 /**
  * Implementation of Task # 3 of Homework # 3. Class for date's validation in
- * fromats dd/MM/yyyy or dd-MM-yyyy
+ * formats dd/MM/yyyy or dd-MM-yyyy
  * 
  * @version 1.0 27 Dec 2022
  * @author Kirill Starovoitov
@@ -110,7 +110,7 @@ public class ValidationDate {
 	 * @param year  year in String
 	 * @return true if is valid otherwise false
 	 */
-	private static boolean validateDayMonth(String day, String month, String year) {
+	private boolean validateDayMonth(String day, String month, String year) {
 
 		String dayMonth = new String(day + month);
 
@@ -133,7 +133,7 @@ public class ValidationDate {
 	 * @param year year in String
 	 * @return true if year is leap otherwise false
 	 */
-	private static boolean isIntercalaryYear(String year) {
+	private boolean isIntercalaryYear(String year) {
 		int yearInt = Integer.parseInt(year);
 
 		if (yearInt % 4 == 0) {
