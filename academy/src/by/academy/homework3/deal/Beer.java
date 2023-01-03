@@ -1,5 +1,8 @@
 package by.academy.homework3.deal;
 
+import by.academy.homework3.deal.anatation.Producer;
+
+@Producer(country = "Belarus", founderFullName = "Me")
 public class Beer extends Product {
 
 	private double volume;

@@ -111,5 +111,11 @@ public class Cat {
 		}
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Cat [age=" + age + ", nickname=" + nickname + ", money=" + money + ", isHomeAnimal=" + isHomeAnimal
+				+ ", initials=" + initials + "]";
+	}
 
 }

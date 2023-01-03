@@ -33,7 +33,8 @@ public class Application {
 		}
 
 		System.out.println(theFirst.getAge()); // Output age of the first cat
-
+		
+		System.out.println(theSecond);
 	}
 
 }

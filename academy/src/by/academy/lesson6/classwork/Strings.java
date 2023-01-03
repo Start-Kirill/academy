@@ -18,7 +18,7 @@ public class Strings {
 //		Task5();
 //		Task6();
 //		Task7();
-		Task8();
+//		Task8();
 	}
 
 	static void Task1() {
