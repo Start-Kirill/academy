@@ -1,5 +1,5 @@
 /*
- * Homework #3 Task #1
+ * Homework #4 Task #1
  * 
  * Kirill Starovoitov
  */
@@ -9,13 +9,17 @@ import java.util.regex.Pattern;
 
 /**
  * Implementation of Task # 3 of Homework # 3. Class for date's validation in
- * formats dd/MM/yyyy or dd-MM-yyyy
+ * formats dd-MM-yyyy
  * 
  * @version 1.0 27 Dec 2022
  * @author Kirill Starovoitov
  *
  */
 public class ValidationDate {
+
+	public ValidationDate() {
+		super();
+	}
 
 	/**
 	 * Static method for validation a date in String format
@@ -66,7 +70,7 @@ public class ValidationDate {
 	}
 
 	/**
-	 * Method for checking is day, a month and a year is valid in particular cases
+	 * Method for checking if a day, a month and a year is valid in particular cases
 	 * 
 	 * @param day   day of month in String
 	 * @param month month in String
