@@ -27,6 +27,8 @@ public class TestApp {
 		System.out.println(customDate.getDayOfWeek());
 		System.out.println(customDate.getDifferenceInDays(new CustomDate("06-01-2023")));
 
+		sc.close();
+
 	}
 
 }
