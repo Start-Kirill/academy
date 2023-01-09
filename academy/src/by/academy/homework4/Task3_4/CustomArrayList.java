@@ -35,7 +35,7 @@ public class CustomArrayList<T> {
 	}
 
 	public void add(T element) {
-		if (array.length < index) {
+		if (array.length <= index + 1) {
 			grow();
 		}
 		array[++index] = element;
@@ -74,7 +74,7 @@ public class CustomArrayList<T> {
 
 	public T remove(int index) {
 		T temp = array[index];
-		System.arraycopy(array, index + 1, array, index, this.index + 1 - index);
+		System.arraycopy(array, index + 1, array, index, this.index - index);
 		array[this.index--] = null;
 		return temp;
 	}
